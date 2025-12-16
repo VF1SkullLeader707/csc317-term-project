@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OrbitCart • Saved List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- NAVBAR (same everywhere) -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img src="images/logos/OrbitCart_Logo.png" class="ng-logo-mark" />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input type="text" name="q" placeholder="Search components..." />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/cart">Cart</a>
+      <a href="/login">Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="catalog-container">
+
+  <header class="page-hero">
+    <h1>Saved List</h1>
+    <p class="page-intro">
+      Components you’ve saved for later reference.
+    </p>
+  </header>
+
+  <section id="saved-grid" class="catalog-grid">
+    <!-- populated by saved.js -->
+  </section>
+
+  <p id="saved-empty" class="page-intro" style="display:none; text-align:center;">
+    You haven’t saved any products yet.
+  </p>
+
+</main>
+
+<footer class="site-footer">
+  <p>© OrbitCart · Group 4 · CSC 317</p>
+</footer>
+
+<script src="js/saved.js" defer></script>
+<script src="js/nav-auth.js" defer></script>
+
+</body>
+</html>

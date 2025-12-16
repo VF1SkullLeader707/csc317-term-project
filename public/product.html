@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OrbitCart • Product</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img src="/images/logos/OrbitCart_Logo.png" alt="OrbitCart logo" class="ng-logo-mark" />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input type="text" name="q" placeholder="Search components..." aria-label="Search components" />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+      <a href="/cart" id="nav-cart">Cart</a>
+      <a href="/about">About</a>
+      <a href="/login" id="nav-login">Login</a>
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+      <a href="/faq">FAQ</a>
+
+    </nav>
+    
+<!--=====================================
+    Hamburger Button
+    ====================================-->    
+    </nav>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+     ☰
+    </button>
+  </div>
+</header>
+
+<section class="product-page">
+  <a class="back-link" href="/shop">← Back to Shop</a>
+
+  <div class="product-layout">
+
+    <div class="product-media">
+      <img id="product-image" src="/images/placeholder-product.png" alt="Product image" />
+    </div>
+
+    <div class="product-details">
+      <h1 id="product-name">Loading…</h1>
+      <p class="product-description" id="product-description"></p>
+
+      <div class="product-meta">
+        <div><strong>SKU:</strong> <span id="product-sku">—</span></div>
+        <div class="in-stock" id="product-stock">In Stock</div>
+        <div><strong>Category:</strong> <span id="product-category">—</span></div>
+      </div>
+    </div>
+
+    <aside class="purchase-panel">
+      <div class="price-label">Unit Price</div>
+      <span class="price-value" id="product-price">$0.00</span>
+
+      <label for="qty">Quantity</label>
+      <input id="qty" type="number" min="1" value="1" />
+
+      <button class="btn-primary" id="add-to-cart-btn" type="button">
+        Add to Cart
+      </button>
+
+      <button class="btn-secondary" id="save-to-list-btn" type="button">
+        ☆ Save to List
+      </button>
+
+      <div class="guest-note">
+        Checkout available without creating an account.<br />
+        Members receive <strong>10% off</strong>.
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© OrbitCart · Group 4 · CSC 317</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/nav-auth.js" defer></script>
+<script src="/js/products-data.js" defer></script>
+<script src="/js/saved.js" defer></script>
+
+<script>
+(function () {
+  "use strict";
+
+  function getCurrentUser() {
+    const raw =
+      localStorage.getItem("currentUser") ||
+      sessionStorage.getItem("currentUser") ||
+      localStorage.getItem("user") ||
+      sessionStorage.getItem("user");
+
+    if (!raw) return null;
+    try { return JSON.parse(raw); } catch { return raw; }
+  }
+
+  function money(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? "$" + n.toFixed(2) : "$0.00";
+  }
+
+  function getId() {
+    return new URLSearchParams(window.location.search).get("id");
+  }
+
+  function loadProductLocal(id) {
+    if (!Array.isArray(window.PRODUCTS)) return null;
+    return window.PRODUCTS.find(p => String(p.id) === String(id)) || null;
+  }
+
+  function addToCart(product, qty) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existing = cart.find(c => String(c.id) === String(product.id));
+
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({
+        id: String(product.id),
+        name: product.name || "Unnamed Product",
+        price: Number(product.price) || 0,
+        image_url: product.image_url || "/images/placeholder-product.png",
+        qty
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const id = getId();
+    const nameEl = document.getElementById("product-name");
+
+    if (!id) {
+      nameEl.textContent = "Missing product ID.";
+      return;
+    }
+
+    const product = loadProductLocal(id);
+    if (!product) {
+      nameEl.textContent = "Product not found.";
+      return;
+    }
+
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-description").textContent = product.description || "";
+    document.getElementById("product-sku").textContent = product.id;
+    document.getElementById("product-category").textContent = product.category || "—";
+    document.getElementById("product-price").textContent = money(product.price);
+
+    const img = document.getElementById("product-image");
+    img.src = product.image_url || "/images/placeholder-product.png";
+    img.alt = product.name;
+
+    document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+      const qtyInput = document.getElementById("qty");
+      const qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
+      addToCart(product, qty);
+    });
+
+    const saveBtn = document.getElementById("save-to-list-btn");
+
+    function syncSaved() {
+      if (!window.SavedList) return;
+      const saved = window.SavedList.isSaved(String(product.id));
+      saveBtn.textContent = saved ? "★ Saved to List" : "☆ Save to List";
+    }
+
+    syncSaved();
+
+    saveBtn.addEventListener("click", () => {
+      const user = getCurrentUser();
+      if (!user) {
+        alert("Saved Lists are for members only. Please login or register.");
+        window.location.href = "/login";
+        return;
+      }
+
+      if (!window.SavedList) return;
+      window.SavedList.toggle(product);
+      syncSaved();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

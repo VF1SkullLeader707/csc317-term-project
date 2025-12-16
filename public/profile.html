@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>OrbitCart • Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img
+          src="/images/logos/OrbitCart_Logo.png"
+          alt="OrbitCart logo"
+          class="ng-logo-mark"
+        />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search components..."
+          aria-label="Search components"
+        />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+      <a href="/cart" id="nav-cart">Cart</a>
+      <a href="/about">About</a>
+
+
+      <a href="/login" id="nav-login">Login</a>
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+      <a href="/faq">FAQ</a>
+
+      
+
+    </nav>
+    
+<!--=====================================
+    Hamburger Button
+    ====================================-->    
+    </nav>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    ☰
+    </button>
+  </div>
+</header>
+
+<!-- ===============================
+     PAGE HERO
+================================ -->
+<section class="page-hero">
+  <h1>User Profile</h1>
+  <p class="page-intro">
+    Account overview for CSC 317 Term Project.
+  </p>
+</section>
+
+<!-- ===============================
+     PROFILE CONTENT
+================================ -->
+<section class="profile-layout">
+
+  <!-- ACCOUNT SUMMARY -->
+  <div class="form-card">
+    <h2>Account Summary</h2>
+
+    <p><strong>Name:</strong> <span id="profile-name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="profile-email">Loading...</span></p>
+    <p><strong>Role:</strong> <span id="profile-role">Loading...</span></p>
+
+    <p><strong>Organization:</strong> Student Engineer</p>
+    <p><strong>Favorite Categories:</strong> Avionics, CAD Models, Test Equipment</p>
+  </div>
+
+  <!-- PREFERENCES (UNCHANGED) -->
+  <div class="form-card">
+    <h2>Preferences</h2>
+    <p>This section is a static placeholder for future settings.</p>
+    <ul>
+      <li>Email alerts for new avionics parts</li>
+      <li>Save favorite product configurations</li>
+      <li>Export CAD order history</li>
+    </ul>
+  </div>
+
+  <!-- ✅ PURCHASE HISTORY (NEW) -->
+  <div class="form-card">
+    <h2>Purchase History</h2>
+
+    <div id="order-history">
+      <p>Loading order history...</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="site-footer">
+  <p>© OrbitCart • Group 4 • CSC 317 Term Project</p>
+</footer>
+
+<!-- ===============================
+     SCRIPTS
+================================ -->
+<script src="js/profile.js" defer></script>
+<script src="js/nav-auth.js" defer></script>
+
+<!-- PURCHASE HISTORY LOGIC -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const historyEl = document.getElementById("order-history");
+  if (!historyEl) return;
+
+  const orders =
+    JSON.parse(localStorage.getItem("purchaseHistory")) || [];
+
+  if (!orders.length) {
+    historyEl.innerHTML = "<p>No purchases yet.</p>";
+    return;
+  }
+
+  historyEl.innerHTML = "";
+
+  orders.slice().reverse().forEach(order => {
+    const div = document.createElement("div");
+    div.className = "order-card";
+
+    div.innerHTML = `
+      <p><strong>Order Date:</strong> ${order.date}</p>
+      <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+      <ul>
+        ${order.items.map(i =>
+          `<li>${i.qty} × ${i.name}</li>`
+        ).join("")}
+      </ul>
+      <hr />
+    `;
+
+    historyEl.appendChild(div);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1008 @@
+/* ======================================================================================
+   RESET + GLOBAL
+====================================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #000;
+  color: #f9fafb;
+  line-height: 1.5;
+
+  /* Offset for fixed navbar */
+  padding-top: 64px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page-intro,
+.product-short {
+  font-weight: 300;
+  color: #cbd5e1;
+}
+
+/* ======================================================================================
+   NAVBAR — FIXED
+====================================================================================== */
+
+.ng-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+}
+
+.ng-header-inner {
+  max-width: 1300px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+.ng-logo-mark {
+  height: 28px;
+  width: auto;
+}
+
+.ng-logo-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.45rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: #6b7280;
+}
+
+.search-box button {
+  background: #111827;
+  border: none;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  color: #e5e7eb;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.nav-right a {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  transition: color 0.2s ease;
+}
+
+.nav-right a:hover {
+  color: #60a5fa;
+}
+
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+  }
+  .nav-right {
+    gap: 1rem;
+  }
+}
+
+/* ======================================================================================
+   HERO SECTION (INDEX)
+====================================================================================== */
+
+.ng-hero {
+  position: relative;
+  height: calc(100vh - 64px);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  background: #000;
+}
+
+.ng-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.05);
+}
+
+.ng-hero-panel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.88),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+.ng-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 6rem 4rem;
+}
+
+.ng-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+.ng-hero-content h1 {
+  font-size: clamp(2.3rem, 3.2vw, 3.1rem);
+  margin-top: 0.6rem;
+  line-height: 1.1;
+}
+
+.ng-subtitle {
+  color: #d4d4d8;
+  margin: 1.1rem 0;
+  font-size: 0.95rem;
+}
+
+.ng-btn-primary {
+  display: inline-block;
+  background: #0046ff;
+  padding: 0.78rem 1.55rem;
+  color: white;
+  border-radius: 10px;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* ======================================================================================
+   CATEGORY SLIDER (INDEX)
+====================================================================================== */
+
+.category-slider {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 4rem 1.5rem;
+  background: #050712;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.category-slider-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.category-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.category-text {
+  flex: 1;
+}
+
+.category-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.category-text p {
+  color: #cbd5e1;
+}
+
+.category-cta {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  background: #0046ff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.category-image img {
+  width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* ======================================================================================
+   HOMEPAGE INFO
+====================================================================================== */
+
+.homepage-info {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.homepage-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ======================================================================================
+   SHOP / CATALOG GRID
+====================================================================================== */
+
+.page-hero {
+  text-align: center;
+  padding: 3rem 1.5rem 1.5rem;
+}
+
+.page-hero h1 {
+  font-size: 2.1rem;
+}
+
+.page-hero .page-intro {
+  margin-top: 0.75rem;
+  max-width: 600px;
+  margin-inline: auto;
+  color: #a1a1aa;
+}
+
+.catalog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.product-card {
+  position: relative;
+  background: radial-gradient(circle at top, #020617, #000);
+  border: 1px solid #111827;
+  border-radius: 14px;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.9rem;
+  background: #0b1220;
+}
+
+.product-card h3 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.product-price {
+  margin-top: 0.45rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 0.85rem;
+  background: #0046ff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Bookmark (Shop Cards) */
+.bookmark-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 34px;
+  height: 34px;
+
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  color: #9ca3af;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.bookmark-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.bookmark-btn.saved {
+  color: #facc15;
+}
+
+/* ======================================================================================
+   PRODUCT PAGE (DIGIKEY-STYLE)
+====================================================================================== */
+
+.product-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.2rem 2rem 3rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #60a5fa;
+  font-size: 0.9rem;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.product-media img {
+  width: 100%;
+  border-radius: 12px;
+  background: #0b1220;
+  border: 1px solid #111827;
+  min-height: 240px;
+  object-fit: contain;
+}
+
+.product-details h1 {
+  font-size: 2.15rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.product-description {
+  color: #cbd5e1;
+  margin-bottom: 1.2rem;
+}
+
+.product-meta {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.in-stock {
+  color: #22c55e;
+  font-weight: 800;
+}
+
+/* Purchase panel */
+.purchase-panel {
+  background: radial-gradient(circle at top, #020617, #000);
+  border: 1px solid #111827;
+  border-radius: 14px;
+  padding: 1.6rem;
+}
+
+.price-label {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+.price-value {
+  display: block;
+  font-size: 2.05rem;
+  font-weight: 900;
+  margin: 0.35rem 0 1rem;
+  letter-spacing: 0.01em;
+}
+
+.purchase-panel label {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.purchase-panel input {
+  width: 100%;
+  padding: 0.55rem 0.6rem;
+  margin: 0.4rem 0 0.9rem;
+  background: #0b1220;
+  border: 1px solid #263043;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  background: #0046ff;
+  border: none;
+  color: white;
+  padding: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  margin-bottom: 0.55rem;
+}
+
+.btn-secondary {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #374151;
+  color: #e5e7eb;
+  padding: 0.65rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.guest-note {
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.35;
+}
+
+@media (max-width: 980px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================================================
+   AUTH PAGES (LOGIN / REGISTER)
+====================================================================================== */
+
+.auth-layout,
+.profile-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.form-card {
+  background: radial-gradient(circle at top, #020617, #000);
+  border: 1px solid #111827;
+  border-radius: 14px;
+  padding: 2rem;
+  width: 320px;
+}
+
+.form-card h2 {
+  margin-bottom: 0.9rem;
+}
+
+.form-card label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: #cbd5e1;
+}
+
+.form-card input {
+  width: 100%;
+  margin-bottom: 0.85rem;
+  padding: 0.6rem;
+  background: #0b1220;
+  border: 1px solid #263043;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-card button {
+  width: 100%;
+  background: #0046ff;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+/* ======================================================================================
+   FOOTER
+====================================================================================== */
+
+.site-footer {
+  border-top: 1px solid #111827;
+  text-align: center;
+  padding: 1.8rem;
+  color: #6b7280;
+  background: #020617;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+/* ======================================================================================
+   HERO (VIDEO)
+====================================================================================== */
+
+.ng-hero {
+  position: relative;
+  height: calc(100vh - 64px);
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.ng-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ng-hero-panel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.1)
+  );
+}
+
+.ng-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  padding: 6rem 4rem;
+}
+
+.ng-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  opacity: 0.8;
+}
+
+.ng-hero-content h1 {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  margin-top: 0.5rem;
+}
+
+.ng-subtitle {
+  color: #d4d4d8;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.ng-btn-primary {
+  display: inline-block;
+  background: #0046ff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  color: white;
+}
+
+
+/* ===============================
+   ABOUT PAGE LAYOUT
+================================ */
+
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  color: #9aa4b2;
+  margin-bottom: 60px;
+}
+
+/* Grid layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+/* ===============================
+   ABOUT + FAQ SHARED LAYOUT
+================================ */
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* ===============================
+   CATEGORY SLIDER FIX
+================================ */
+
+.category-slider-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Track holds all slides horizontally */
+.category-track {
+  display: flex;
+  transition: transform 0.45s ease-in-out;
+  width: 100%;
+}
+
+/* Each slide takes full width */
+.category-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Arrow buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 2rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.slider-prev {
+  left: 10px;
+}
+
+.slider-next {
+  right: 10px;
+}
+
+
+/* ===============================
+   MOBILE NAVBAR (HAMBURGER)
+================================ */
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-right {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background: #020617;
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    border-left: 1px solid #111827;
+    border-bottom: 1px solid #111827;
+  }
+
+  .nav-right a {
+    padding: 0.5rem 0;
+  }
+
+  .nav-right.open {
+    display: flex;
+  }
+
+  .nav-hamburger {
+    display: block;
+    margin-left: 1rem;
+  }
+
+  .nav-center {
+    display: none;
+  }
+}
+
+
+/* ===============================
+   DEMO CHATBOT
+================================ */
+
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.chatbot-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #0046ff;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.chatbot-window {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  max-height: 420px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatbot-window.open {
+  display: flex;
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  font-weight: 700;
+}
+
+.chatbot-header button {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 0.8rem;
+  overflow-y: auto;
+  font-size: 0.85rem;
+}
+
+.bot-msg {
+  background: #0b1220;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  color: #e5e7eb;
+}
+
+.user-msg {
+  background: #0046ff;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #1f2937;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 0.6rem;
+  background: #020617;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+
+.chatbot-input button {
+  padding: 0.6rem 0.9rem;
+  border: none;
+  background: #0046ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* ===============================
+   DEMO CHATBOT
+================================ */
+
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.chatbot-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #0046ff;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.chatbot-window {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  max-height: 420px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatbot-window.open {
+  display: flex;
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  font-weight: 700;
+}
+
+.chatbot-header button {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 0.8rem;
+  overflow-y: auto;
+  font-size: 0.85rem;
+}
+
+.bot-msg {
+  background: #0b1220;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  color: #e5e7eb;
+}
+
+.user-msg {
+  background: #0046ff;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #1f2937;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 0.6rem;
+  background: #020617;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+
+.chatbot-input button {
+  padding: 0.6rem 0.9rem;
+  border: none;
+  background: #0046ff;
+  color: #fff;
+  cursor: pointer;
+}

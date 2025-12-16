@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saved Items • OrbitCart</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Auth-aware navbar -->
+  <script src="/js/nav-auth.js" defer></script>
+
+  <!-- Saved list logic + renderer -->
+  <script src="/js/saved.js" defer></script>
+</head>
+
+<body>
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <!-- LEFT: LOGO -->
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img
+          src="/images/logos/OrbitCart_Logo.png"
+          alt="OrbitCart logo"
+          class="ng-logo-mark"
+        />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <!-- CENTER: SEARCH -->
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search components..."
+          aria-label="Search components"
+        />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <!-- RIGHT: NAV LINKS -->
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+
+      <a href="/cart" id="nav-cart">Cart</a>
+      <a href="/about">About</a>
+
+
+      <!-- Logged OUT -->
+      <a href="/login" id="nav-login">Login</a>
+
+      <!-- Logged IN -->
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+      <a href="/faq">FAQ</a>
+
+    </nav>
+    
+<!--=====================================
+    Hamburger Button
+    ====================================-->    
+    </nav>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    ☰
+    </button>
+  </div>
+</header>
+
+<!-- ===============================
+     PAGE HERO
+================================ -->
+<section class="page-hero">
+  <h1>Saved Items</h1>
+  <p class="page-intro">
+    Products you’ve bookmarked for later.
+  </p>
+</section>
+
+<!-- ===============================
+     SAVED GRID
+================================ -->
+<main class="catalog-container">
+
+  <!-- Empty State -->
+  <p id="saved-empty" class="page-intro" style="display:none; text-align:center;">
+    You haven’t saved any items yet.
+  </p>
+
+  <!-- Saved Items Grid -->
+  <div
+    id="saved-grid"
+    class="catalog-grid"
+    aria-live="polite"
+  ></div>
+
+</main>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="site-footer">
+  © OrbitCart · Group 4 · CSC 317
+</footer>
+
+</body>
+</html>

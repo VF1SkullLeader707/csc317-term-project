@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OrbitCart Aerospace Wholesale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Space Grotesk -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<!-- ===============================
+     DEMO CHATBOT
+================================ -->
+<div class="chatbot">
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open chat">
+    💬
+  </button>
+
+  <div class="chatbot-window" id="chatbot-window">
+    <div class="chatbot-header">
+      <span>OrbitCart Demo Assistant</span>
+      <button id="chatbot-close">✕</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="bot-msg">
+        Hi! I’m the OrbitCart demo assistant.  
+        Ask me about products, accounts, or this project.
+      </div>
+    </div>
+
+    <form class="chatbot-input" id="chatbot-form">
+      <input
+        type="text"
+        id="chatbot-input"
+        placeholder="Type a question…"
+        autocomplete="off"
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
+<body>
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img
+          src="/images/logos/OrbitCart_Logo.png"
+          alt="OrbitCart logo"
+          class="ng-logo-mark"
+        />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input type="text" name="q" placeholder="Search components..." />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-right" id="nav-links">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+      <a href="/cart">Cart</a>
+      <a href="/about">About</a>
+      <a href="/login" id="nav-login">Login</a>
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+      <a href="/faq">FAQ</a>
+    </nav>
+
+    <!-- HAMBURGER -->
+    <button
+      class="nav-hamburger"
+      id="nav-toggle"
+      aria-label="Menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<!-- ===============================
+     HERO (VIDEO)
+================================ -->
+<section class="ng-hero">
+
+  <video
+    class="ng-hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="/images/satellite_x.mp4" type="video/mp4">
+  </video>
+
+  <div class="ng-hero-panel"></div>
+
+  <div class="ng-hero-content">
+    <span class="ng-kicker">Group 4 · OrbitCart</span>
+    <h1>Microscopic Giants of OrbitCart</h1>
+
+    <p class="ng-subtitle">
+      An aerospace wholesaler storefront connecting surplus components,
+      test hardware, NX models, and CAD-on-demand services.
+    </p>
+
+    <h2>Sign up today and get 10% off</h2>
+
+    <a href="/shop" class="ng-btn-primary">
+      Explore Components
+    </a>
+  </div>
+
+</section>
+
+<!-- ===============================
+     CATEGORY SLIDER (SAFE)
+================================ -->
+<section class="category-slider">
+  <div class="category-slider-inner">
+
+    <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
+
+    <div class="category-track">
+
+      <!-- Slide 1 -->
+      <article class="category-slide">
+        <div class="category-content">
+          <div class="category-text">
+            <h2>Flight Platforms</h2>
+            <p>Avionics, CubeSat hardware, telemetry systems.</p>
+            <a href="/shop?category=flight" class="category-cta">
+              Browse Flight Hardware
+            </a>
+          </div>
+          <div class="category-image">
+            <img src="/images/flightPlatforms.png" alt="Flight Platforms">
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="category-slide">
+        <div class="category-content">
+          <div class="category-text">
+            <h2>Electronics & Test</h2>
+            <p>Oscilloscopes, analyzers, lab power supplies.</p>
+            <a href="/shop?category=electronics" class="category-cta">
+              Browse Electronics
+            </a>
+          </div>
+          <div class="category-image">
+            <img src="/images/Oscilloscope.png" alt="Electronics">
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="category-slide">
+        <div class="category-content">
+          <div class="category-text">
+            <h2>Manufacturing & CAD</h2>
+            <p>NX assemblies, fixtures, tooling packages.</p>
+            <a href="/shop?category=manufacturing" class="category-cta">
+              Browse Manufacturing
+            </a>
+          </div>
+          <div class="category-image">
+            <img src="/images/cockpit_Sim.png" alt="Manufacturing">
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <button class="slider-btn slider-next" aria-label="Next slide">›</button>
+
+  </div>
+</section>
+
+<!-- ===============================
+     INFO
+================================ -->
+<main>
+  <section class="homepage-info">
+    <h2>Welcome to OrbitCart</h2>
+    <p class="page-intro">
+      Your source for aerospace components, lab electronics,
+      CAD models, and engineering tooling.
+    </p>
+    <p>
+      This project demonstrates a full-stack web application
+      built for <strong>CSC 317</strong>.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© OrbitCart · Group 4 · CSC 317 (Fall 2025)</p>
+</footer>
+
+<!-- ===============================
+     SCRIPTS
+================================ -->
+<script src="/js/nav-auth.js" defer></script>
+<script src="/js/chatbot.js" defer></script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".category-track");
+  const slides = document.querySelectorAll(".category-slide");
+  const prev = document.querySelector(".slider-prev");
+  const next = document.querySelector(".slider-next");
+
+  if (!track || slides.length === 0) return;
+
+  let index = 0;
+
+  function update() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  next.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    update();
+  });
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    update();
+  });
+});
+</script>
+
+</body>
+</html>

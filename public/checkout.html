@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OrbitCart • Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <!-- LEFT: LOGO -->
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img
+          src="/images/logos/OrbitCart_Logo.png"
+          alt="OrbitCart logo"
+          class="ng-logo-mark"
+        />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <!-- CENTER: SEARCH -->
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search components..."
+          aria-label="Search components"
+        />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <!-- RIGHT: NAV LINKS -->
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+
+      <a href="/cart" id="nav-cart">Cart</a>
+      <a href="/about">About</a>
+
+
+      <!-- Logged OUT -->
+      <a href="/login" id="nav-login">Login</a>
+
+      <!-- Logged IN -->
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+      <a href="/faq">FAQ</a>
+
+    </nav>
+    <!--=====================================
+    Hamburger Button
+    ====================================-->    
+    </nav>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    ☰
+    </button>
+  </div>
+</header>
+
+
+
+
+<main class="checkout-container">
+  <h1>Checkout</h1>
+
+  <section class="order-summary">
+    <h2>Order Summary</h2>
+    <div id="checkout-items"></div>
+    <p><strong>Total:</strong> $<span id="checkout-total">0.00</span></p>
+  </section>
+
+  <section class="checkout-form">
+    <h2>Customer Information</h2>
+
+    <form id="checkout-form">
+      <label>
+        Full Name
+        <input type="text" id="checkout-name" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" id="checkout-email" required />
+      </label>
+
+      <button type="submit" class="primary-btn">
+        Place Order
+      </button>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© OrbitCart · Group 4 · CSC 317</p>
+</footer>
+
+<script src="js/checkout.js" defer></script>
+<script src="js/nav-auth.js" defer></script>
+
+</body>
+</html>

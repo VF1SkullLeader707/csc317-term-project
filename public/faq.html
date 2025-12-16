@@ -1,0 +1,145 @@
+<!-- public/faq.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OrbitCart • FAQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="ng-header">
+  <div class="ng-header-inner">
+
+    <div class="nav-left">
+      <a href="/" class="nav-logo-link">
+        <img
+          src="/images/logos/OrbitCart_Logo.png"
+          alt="OrbitCart logo"
+          class="ng-logo-mark"
+        />
+        <span class="ng-logo-text">OrbitCart</span>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <form class="search-box" action="/shop" method="GET">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search components..."
+          aria-label="Search components"
+        />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <nav class="nav-right">
+      <a href="/shop">Shop</a>
+      <a href="/saved.html" id="nav-saved" style="display:none;">Saved</a>
+      <a href="/cart" id="nav-cart">Cart</a>
+      <a href="/about">About</a>
+      <a href="/faq">FAQ</a>
+
+      <a href="/login" id="nav-login">Login</a>
+      <a href="/profile" id="nav-profile" style="display:none;">Profile</a>
+      <a href="#" id="nav-logout" style="display:none;">Logout</a>
+    </nav>
+    
+<!--=====================================
+    Hamburger Button
+    ====================================-->    
+    </nav>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    ☰
+    </button>
+  </div>
+</header>
+
+<!-- ===============================
+     PAGE HERO
+================================ -->
+<section class="page-hero">
+  <h1>Frequently Asked Questions</h1>
+  <p class="page-intro">
+    Answers to common questions about OrbitCart, ordering, and this course project.
+  </p>
+</section>
+<!-- ===============================
+     FAQ CONTENT
+================================ -->
+<main class="about-container">
+
+  <div class="about-grid">
+
+    <section class="about-card">
+      <h2>Is OrbitCart a real store?</h2>
+      <p>
+        No. OrbitCart is a course project created for <strong>CSC 317</strong> at
+        <strong>San Francisco State University</strong>. All products, payments,
+        and orders are simulated for educational purposes only.
+      </p>
+    </section>
+
+    <section class="about-card">
+      <h2>Do I need an account to shop?</h2>
+      <p>
+        You can browse products without an account. However, creating an account
+        allows you to save items, complete checkout, and view your purchase history
+        in your user profile.
+      </p>
+    </section>
+
+    <section class="about-card">
+      <h2>How does checkout work?</h2>
+      <p>
+        Checkout is a mocked process. When you place an order, the system records
+        the purchase in the database and displays it in your profile’s purchase
+        history. No real payment processing is performed.
+      </p>
+    </section>
+
+    <section class="about-card">
+      <h2>Are payments real?</h2>
+      <p>
+        No. All payments are simulated. OrbitCart does not connect to any real
+        payment gateway or collect real financial information.
+      </p>
+    </section>
+
+    <section class="about-card">
+      <h2>What technologies are used?</h2>
+      <p>
+        OrbitCart is built using <strong>Node.js</strong>, <strong>Express</strong>,
+        <strong>SQLite</strong>, and vanilla <strong>HTML/CSS/JavaScript</strong>.
+        User authentication, product browsing, and cart logic are implemented
+        server-side and client-side.
+      </p>
+    </section>
+
+  </div>
+
+</main>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="site-footer">
+  <p>© OrbitCart · Group 4 · CSC 317 (Fall 2025)</p>
+</footer>
+
+<!-- REQUIRED SCRIPTS -->
+<script src="/js/nav-auth.js" defer></script>
+
+</body>
+</html>
