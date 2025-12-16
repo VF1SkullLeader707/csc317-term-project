@@ -1,4 +1,5 @@
-// routes/customers.js
+// routes/customers.js (RENDER-SAFE FINAL VERSION)
+
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
@@ -20,7 +21,7 @@ router.post("/register", (req, res) => {
   const passwordHash = bcrypt.hashSync(password, 10);
 
   const sql = `
-    INSERT INTO users (full_name, email, password_hash, role)
+    INSERT INTO customers (full_name, email, password_hash, role)
     VALUES (?, ?, ?, 'user')
   `;
 
@@ -57,7 +58,11 @@ router.post("/login", (req, res) => {
   }
 
   db.get(
-    "SELECT id, full_name, email, password_hash, role FROM users WHERE email = ?",
+    `
+    SELECT id, full_name, email, password_hash, role
+    FROM customers
+    WHERE email = ?
+    `,
     [email],
     (err, user) => {
       if (err) {
@@ -91,7 +96,9 @@ router.post("/login", (req, res) => {
 // GET /api/customers/me
 // -----------------------------
 router.get("/me", (req, res) => {
-  if (!req.session.user) return res.status(401).json({ user: null });
+  if (!req.session.user) {
+    return res.status(401).json({ user: null });
+  }
   res.json({ user: req.session.user });
 });
 
