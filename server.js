@@ -1,8 +1,11 @@
-// server.js (FINAL PROJECT VERSION)
+// server.js (FINAL PROJECT VERSION — RENDER SAFE)
 
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
+
+// 🔴 IMPORTANT: Initialize database on startup (RENDER FIX)
+require("./db/init");
 
 const productsRouter = require("./routes/products");
 const cartRouter = require("./routes/cart-routes");
@@ -10,6 +13,7 @@ const customersRouter = require("./routes/customers");
 
 const app = express();
 app.set("trust proxy", 1); // REQUIRED for Render / reverse proxy
+
 const PORT = process.env.PORT || 3000;
 
 // ----------------------------
@@ -26,6 +30,10 @@ app.use(
     secret: "orbitcart-secret-key",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: false,   // Render handles HTTPS before Node
+      sameSite: "lax", // Required for login persistence
+    },
   })
 );
 
