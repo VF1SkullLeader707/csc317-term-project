@@ -3,7 +3,7 @@
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 
-// 🔴 MUST MATCH init.js EXACTLY
+// MUST MATCH init.js EXACTLY
 const dbPath = path.join(__dirname, "database.sqlite");
 
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -13,5 +13,8 @@ const db = new sqlite3.Database(dbPath, (err) => {
     console.log("✅ Connected to OrbitCart SQLite database");
   }
 });
+
+// 🔥 THIS LINE IS THE MISSING PIECE
+require("./init");
 
 module.exports = db;
