@@ -24,7 +24,11 @@ db.exec(schemaSQL, (err) => {
   db.exec(ordersSQL, (err2) => {
     if (err2) {
       console.error("❌ Error applying orders.sql:", err2.message);
-      process.exit(1);
+     if (err) {
+  console.error("❌ Error applying schema.sql:", err.message);
+  return;
+}
+
     }
     console.log("✅ orders.sql applied");
 

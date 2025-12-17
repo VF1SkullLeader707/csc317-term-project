@@ -1,4 +1,4 @@
-// routes/customers.js (RENDER-SAFE FINAL VERSION)
+// routes/customers.js (FINAL — RENDER SAFE)
 
 const express = require("express");
 const bcrypt = require("bcryptjs");
@@ -21,28 +21,26 @@ router.post("/register", (req, res) => {
   const passwordHash = bcrypt.hashSync(password, 10);
 
   const sql = `
-    INSERT INTO customers (full_name, email, password_hash, role)
-    VALUES (?, ?, ?, 'user')
+    INSERT INTO customers (full_name, email, password_hash)
+    VALUES (?, ?, ?)
   `;
 
   db.run(sql, [fullName, email, passwordHash], function (err) {
     if (err) {
-      if (String(err.message || "").includes("UNIQUE")) {
+      if (String(err.message).includes("UNIQUE")) {
         return res.status(409).json({ error: "Email already registered." });
       }
       console.error("Register error:", err);
       return res.status(500).json({ error: "Server error." });
     }
 
-    // Create session (logged in)
     req.session.user = {
       id: this.lastID,
       fullName,
-      email,
-      role: "user",
+      email
     };
 
-    return res.json({ ok: true, user: req.session.user });
+    res.json({ ok: true, user: req.session.user });
   });
 });
 
@@ -59,7 +57,7 @@ router.post("/login", (req, res) => {
 
   db.get(
     `
-    SELECT id, full_name, email, password_hash, role
+    SELECT id, full_name, email, password_hash
     FROM customers
     WHERE email = ?
     `,
@@ -79,15 +77,13 @@ router.post("/login", (req, res) => {
         return res.status(401).json({ error: "Invalid email or password." });
       }
 
-      // Create session
       req.session.user = {
         id: user.id,
         fullName: user.full_name,
-        email: user.email,
-        role: user.role || "user",
+        email: user.email
       };
 
-      return res.json({ ok: true, user: req.session.user });
+      res.json({ ok: true, user: req.session.user });
     }
   );
 });
