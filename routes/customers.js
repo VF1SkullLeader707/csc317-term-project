@@ -1,4 +1,4 @@
-// routes/customers.js (FINAL — RENDER SAFE)
+// routes/customers.js (FINAL — RENDER SAFE, USERS TABLE)
 
 const express = require("express");
 const bcrypt = require("bcryptjs");
@@ -21,13 +21,13 @@ router.post("/register", (req, res) => {
   const passwordHash = bcrypt.hashSync(password, 10);
 
   const sql = `
-    INSERT INTO customers (full_name, email, password_hash)
-    VALUES (?, ?, ?)
+    INSERT INTO users (full_name, email, password_hash, role)
+    VALUES (?, ?, ?, 'user')
   `;
 
   db.run(sql, [fullName, email, passwordHash], function (err) {
     if (err) {
-      if (String(err.message).includes("UNIQUE")) {
+      if (String(err.message || "").includes("UNIQUE")) {
         return res.status(409).json({ error: "Email already registered." });
       }
       console.error("Register error:", err);
@@ -37,10 +37,11 @@ router.post("/register", (req, res) => {
     req.session.user = {
       id: this.lastID,
       fullName,
-      email
+      email,
+      role: "user",
     };
 
-    res.json({ ok: true, user: req.session.user });
+    return res.json({ ok: true, user: req.session.user });
   });
 });
 
@@ -57,8 +58,8 @@ router.post("/login", (req, res) => {
 
   db.get(
     `
-    SELECT id, full_name, email, password_hash
-    FROM customers
+    SELECT id, full_name, email, password_hash, role
+    FROM users
     WHERE email = ?
     `,
     [email],
@@ -80,10 +81,11 @@ router.post("/login", (req, res) => {
       req.session.user = {
         id: user.id,
         fullName: user.full_name,
-        email: user.email
+        email: user.email,
+        role: user.role || "user",
       };
 
-      res.json({ ok: true, user: req.session.user });
+      return res.json({ ok: true, user: req.session.user });
     }
   );
 });
@@ -92,19 +94,15 @@ router.post("/login", (req, res) => {
 // GET /api/customers/me
 // -----------------------------
 router.get("/me", (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ user: null });
-  }
-  res.json({ user: req.session.user });
+  if (!req.session.user) return res.status(401).json({ user: null });
+  return res.json({ user: req.session.user });
 });
 
 // -----------------------------
 // POST /api/customers/logout
 // -----------------------------
 router.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    res.json({ ok: true });
-  });
+  req.session.destroy(() => res.json({ ok: true }));
 });
 
 module.exports = router;
