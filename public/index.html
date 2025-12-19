@@ -135,69 +135,73 @@
 </section>
 
 <!-- ===============================
-     CATEGORY SLIDER (SAFE)
+     CATEGORY SLIDER
 ================================ -->
-<section class="category-slider">
+<section class="category-slider" aria-label="Featured OrbitCart categories">
   <div class="category-slider-inner">
 
-    <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
+    <button class="slider-btn slider-prev" aria-label="Previous">‹</button>
 
     <div class="category-track">
 
-      <!-- Slide 1 -->
-      <article class="category-slide">
+      <!-- SLIDE 1 -->
+      <article class="category-slide" data-category="flight">
         <div class="category-content">
           <div class="category-text">
             <h2>Flight Platforms</h2>
-            <p>Avionics, CubeSat hardware, telemetry systems.</p>
+            <p>Jet fighters, launch vehicles, smallsats, and UAV platforms.</p>
             <a href="/shop?category=flight" class="category-cta">
               Browse Flight Hardware
             </a>
           </div>
+
           <div class="category-image">
-            <img src="/images/flightPlatforms.png" alt="Flight Platforms">
+            <img src="/images/flightPlatforms.png" alt="Flight platforms" />
           </div>
         </div>
       </article>
 
-      <!-- Slide 2 -->
-      <article class="category-slide">
+      <!-- SLIDE 2 -->
+      <article class="category-slide" data-category="electronics">
         <div class="category-content">
           <div class="category-text">
             <h2>Electronics & Test</h2>
-            <p>Oscilloscopes, analyzers, lab power supplies.</p>
+            <p>Oscilloscopes, analyzers, lab power, avionics interfaces.</p>
             <a href="/shop?category=electronics" class="category-cta">
               Browse Electronics
             </a>
           </div>
+
           <div class="category-image">
-            <img src="/images/Oscilloscope.png" alt="Electronics">
+            <img src="/images/Oscilloscope.png" alt="Electronics & Test" />
           </div>
         </div>
       </article>
 
-      <!-- Slide 3 -->
-      <article class="category-slide">
+      <!-- SLIDE 3 -->
+      <article class="category-slide" data-category="manufacturing">
         <div class="category-content">
           <div class="category-text">
-            <h2>Manufacturing & CAD</h2>
-            <p>NX assemblies, fixtures, tooling packages.</p>
+            <h2>CAD, Manufacturing & Tooling</h2>
+            <p>NX CAD models, production drawings, tooling packages.</p>
             <a href="/shop?category=manufacturing" class="category-cta">
-              Browse Manufacturing
+              View CAD & Tooling
             </a>
           </div>
+
           <div class="category-image">
-            <img src="/images/cockpit_Sim.png" alt="Manufacturing">
+            <img src="/images/Robotics.png" alt="CAD & Manufacturing" />
           </div>
         </div>
       </article>
 
     </div>
 
-    <button class="slider-btn slider-next" aria-label="Next slide">›</button>
+    <button class="slider-btn slider-next" aria-label="Next">›</button>
 
   </div>
 </section>
+
 
 <!-- ===============================
      INFO
@@ -225,6 +229,8 @@
 ================================ -->
 <script src="/js/nav-auth.js" defer></script>
 <script src="/js/chatbot.js" defer></script>
+<script src="js/slider.js" defer></script>
+
 
 
 
