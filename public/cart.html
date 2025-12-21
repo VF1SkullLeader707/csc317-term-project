@@ -79,31 +79,47 @@
 <!-- ===============================
      CART CONTENT
 ================================ -->
-<main class="cart-container">
+<main class="cart-page">
 
-  <h1>Your Cart</h1>
+  <!-- LEFT: CART ITEMS -->
+  <section class="cart-items-panel">
+    <h1 class="cart-title">Your Cart</h1>
 
-  <div id="cart-items"></div>
+    <div id="cart-items"></div>
 
-  <div class="cart-summary">
-    <p><strong>Subtotal:</strong> $<span id="cart-subtotal">0.00</span></p>
+    <div id="cart-empty" class="cart-empty" style="display:none;">
+      <p>Your cart is currently empty.</p>
+      <a href="/shop">Browse components →</a>
+    </div>
+  </section>
 
-    <!-- Discount placeholder (we'll activate next) -->
-    <p id="member-discount" style="display:none;">
-      <strong>Member Discount (10%):</strong>
-      -$<span id="discount-amount">0.00</span>
-    </p>
+  <!-- RIGHT: SUMMARY -->
+  <aside class="cart-summary-panel">
+    <h2>Cart Summary</h2>
 
-    <p class="cart-total">
-      <strong>Total:</strong> $<span id="cart-total">0.00</span>
-    </p>
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span>$<span id="cart-subtotal">0.00</span></span>
+    </div>
 
-    <button id="checkout-btn" class="primary-btn">
-      Proceed to Checkout
+    <!-- Discount placeholder (unchanged logic) -->
+    <div id="member-discount" class="summary-row" style="display:none;">
+      <span>Member Discount (10%)</span>
+      <span>-$<span id="discount-amount">0.00</span></span>
+    </div>
+
+    <div class="summary-row total">
+      <span>Total</span>
+      <span>$<span id="cart-total">0.00</span></span>
+    </div>
+
+    <button id="checkout-btn" class="checkout-btn">
+      Proceed to Checkout →
     </button>
-  </div>
+  </aside>
 
 </main>
+
 
 <!-- ===============================
      FOOTER
