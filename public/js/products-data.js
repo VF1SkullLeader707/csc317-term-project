@@ -1,4 +1,3 @@
-// public/js/products-data.js
 // Central product catalog for OrbitCart (CSC 317)
 // NO randomization — fixed 12 products (unique images)
 
@@ -22,8 +21,8 @@ window.PRODUCTS = [
     category: "flight",
     price: 179.00,
     description: "Inertial measurement unit for guidance and navigation systems.",
+    image_url: "/images/iceps.png"
   },
-  image_url: "/images/iceps.png"
   {
     id: "flight-003",
     name: "Satellite Power Distribution Unit",
