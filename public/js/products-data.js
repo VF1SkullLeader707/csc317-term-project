@@ -22,8 +22,8 @@ window.PRODUCTS = [
     category: "flight",
     price: 179.00,
     description: "Inertial measurement unit for guidance and navigation systems.",
-    image_url: "/images/ICEPS.png"
   },
+  image_url: "/images/iceps.png"
   {
     id: "flight-003",
     name: "Satellite Power Distribution Unit",
